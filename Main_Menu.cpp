@@ -7,20 +7,17 @@ MainMenu::MainMenu(float width, float height) {
     {
         mainMenu[i].setFont(font);
         mainMenu[i].setFillColor(Color(0,0,0,225)); //black color
+        mainMenu[i].setPosition(400, 150+100*i);
         mainMenu[i].setCharacterSize(70);
     }
 	//Play
 	mainMenu[0].setString("Play");
-	mainMenu[0].setPosition(400, 150);
 	//Options
 	mainMenu[1].setString("Options");
-	mainMenu[1].setPosition(400, 250);
 	//About
 	mainMenu[2].setString("About");
-	mainMenu[2].setPosition(400, 350);
 	//Exit
 	mainMenu[3].setString("Exit");
-	mainMenu[3].setPosition(400, 450);
 	MainMenuSelected = -1;
 }
 MainMenu::~MainMenu() {
