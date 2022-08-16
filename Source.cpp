@@ -3,7 +3,7 @@
 #include "MainMenu.h"
 using namespace sf;
 int main() {
-const int WIDTH= 1200;
+const int WIDTH= 1000;
 const int HEIGHT= 750;
 	//make a main window
 	RenderWindow MENU(VideoMode(WIDTH, HEIGHT), "Main Menu", Style::Default);
@@ -29,7 +29,7 @@ const int HEIGHT= 750;
 	RectangleShape background;
 	background.setSize(Vector2f(WIDTH, HEIGHT));
 	Texture Maintexture;
-	Maintexture.loadFromFile("Images/background.jpg");
+	Maintexture.loadFromFile("Images/background1.jpg");
 	background.setTexture(&Maintexture);
 
 	//Photo to the game
