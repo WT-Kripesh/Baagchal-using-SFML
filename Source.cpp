@@ -3,21 +3,21 @@
 #include "MainMenu.h"
 using namespace sf;
 int main() {
-const int WIDTH= 1000;
-const int HEIGHT= 750;
+	const int WIDTH = 1050;
+	const int HEIGHT = 800;
 	//make a main window
 	RenderWindow MENU(VideoMode(WIDTH, HEIGHT), "Main Menu", Style::Default);
-	MainMenu mainMenu(MENU.getSize().x, MENU.getSize().y);
+	MainMenu mainMenu(WIDTH, HEIGHT);
 	//For Audio
 	SoundBuffer buffer1;
 	SoundBuffer buffer2;
 	if (!buffer1.loadFromFile("Audio/menu.wav"))
 	{
-		cout << "ERROR" <<endl;
+		cout << "ERROR" << endl;
 	}
 	if (!buffer2.loadFromFile("Audio/selected.wav"))
 	{
-		cout << "ERROR" <<endl;
+		cout << "ERROR" << endl;
 	}
 	Sound sound1;
 	Sound sound2;
@@ -29,7 +29,7 @@ const int HEIGHT= 750;
 	RectangleShape background;
 	background.setSize(Vector2f(WIDTH, HEIGHT));
 	Texture Maintexture;
-	Maintexture.loadFromFile("Images/background1.jpg");
+	Maintexture.loadFromFile("Images/background.jpg");
 	background.setTexture(&Maintexture);
 
 	//Photo to the game
@@ -38,6 +38,18 @@ const int HEIGHT= 750;
 	Texture back_texture;
 	back_texture.loadFromFile("Images/board.jpg");
 	Pbackground.setTexture(&back_texture);
+
+	//Sprite of tiger
+	sf::Texture tiger;
+	if (!tiger.loadFromFile("Sprites/tiger.png"))
+	{
+		cout << "error...";
+	}
+	sf::Sprite tiger_sprite[4];
+	for (int i = 0; i < 4; i++) {
+		tiger_sprite[i].setTexture(tiger);
+	}
+
 
 	//photo to the option (will be added in future)
 	//photo to the about (will be added in future)
@@ -61,11 +73,9 @@ const int HEIGHT= 750;
 					break;
 				}
 				if (event.key.code == Keyboard::Return) {
-					RenderWindow Play(VideoMode(WIDTH, HEIGHT), "PLAY");
-					RenderWindow OPTIONS(VideoMode(WIDTH, HEIGHT), "OPTIONS");
-					RenderWindow ABOUT(VideoMode(WIDTH, HEIGHT), "ABOUT");
 					int x = mainMenu.MainMenuPressed();
 					if (x == 0) {
+						RenderWindow Play(VideoMode(WIDTH, HEIGHT), "PLAY");
 						sound2.play();
 						while (Play.isOpen()) {
 							Event aevent;
@@ -81,14 +91,23 @@ const int HEIGHT= 750;
 									}
 								}
 							}
-							OPTIONS.close();
-							ABOUT.close();
 							Play.clear();
 							Play.draw(Pbackground);
+
+							tiger_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
+							tiger_sprite.setPosition(450,360);
+							tiger_sprite.setOrigin(sf::Vector2f(50.f, 50.f));
+							Play.draw(tiger_sprite);
+							
+
+
+
+
 							Play.display();
 						}
 					}
 					if (x == 1) {
+						RenderWindow OPTIONS(VideoMode(WIDTH, HEIGHT), "OPTIONS");
 						sound2.play();
 						while (OPTIONS.isOpen()) {
 							Event aevent;
@@ -102,13 +121,12 @@ const int HEIGHT= 750;
 									}
 								}
 							}
-							Play.close();
 							OPTIONS.clear();
-							ABOUT.close();
 							OPTIONS.display();
 						}
 					}
 					if (x == 2) {
+						RenderWindow ABOUT(VideoMode(WIDTH, HEIGHT), "ABOUT");
 						sound2.play();
 						while (ABOUT.isOpen()) {
 							Event aevent;
@@ -122,15 +140,13 @@ const int HEIGHT= 750;
 									}
 								}
 							}
-							Play.close();
-							OPTIONS.clear();
 							ABOUT.clear();
 							ABOUT.display();
 						}
 					}
 					if (x == 3)
-						sound2.play();
-						MENU.close();
+					sound2.play();
+					MENU.close();
 					break;
 				}
 			}
