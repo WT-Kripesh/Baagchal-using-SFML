@@ -1,3 +1,4 @@
+/*
 #include <SFML/Graphics.hpp>
 #include<SFML/Audio.hpp>
 #include "MainMenu.h"
@@ -29,7 +30,7 @@ int main() {
 	RectangleShape background;
 	background.setSize(Vector2f(WIDTH, HEIGHT));
 	Texture Maintexture;
-	Maintexture.loadFromFile("Images/background.jpg");
+	Maintexture.loadFromFile("Images/background1.jpg");
 	background.setTexture(&Maintexture);
 
 	//Photo to the game
@@ -41,7 +42,7 @@ int main() {
 
 	//Sprite of tiger
 	sf::Texture tiger;
-	if (!tiger.loadFromFile("Sprites/tiger.png"))
+	if (!tiger.loadFromFile("Images/tiger.png"))
 	{
 		cout << "error...";
 	}
@@ -94,11 +95,11 @@ int main() {
 							Play.clear();
 							Play.draw(Pbackground);
 
-							tiger_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
-							tiger_sprite.setPosition(450,360);
-							tiger_sprite.setOrigin(sf::Vector2f(50.f, 50.f));
-							Play.draw(tiger_sprite);
-							
+							tiger_sprite[0].setScale(sf::Vector2f(0.15f, 0.15f));
+							tiger_sprite[0].setPosition(450,360);
+							tiger_sprite[0].setOrigin(sf::Vector2f(50.f, 50.f));
+							Play.draw(tiger_sprite[0]);
+
 
 
 
@@ -158,3 +159,4 @@ int main() {
 	}
 	return 0;
 }
+*/
