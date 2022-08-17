@@ -9,7 +9,7 @@ class MainMenu {
 private:
 	int MainMenuSelected;
 	Font font;
-	Text mainMenu[Max_main_menu];
+	Text mainMenu[Max_main_menu],title;
 public:
 	MainMenu(float width, float height);
 	void draw(RenderWindow& window);
