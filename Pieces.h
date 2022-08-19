@@ -29,10 +29,12 @@ public:
 
 class Goat{
     Texture goat_texture;
-    Sprite goat_sprite;
+
 
 public:
-    Goat(){
+    Sprite goat_sprite;
+Goat(){
+
         if (!goat_texture.loadFromFile("Images/goat.png"))
         {
             cout << "Error loading from file!"<<endl;
