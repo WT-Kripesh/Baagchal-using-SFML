@@ -2,10 +2,10 @@
 #include "Pieces.h"
 
 void initial_positions(Tiger t[4]){
-        t[0].position=11;
-        t[1].position=15;
-        t[2].position=51;
-        t[3].position=55;
+        t[0].position=0;
+        t[1].position=4;
+        t[2].position=40;
+        t[3].position=44;
 }
 
 
@@ -43,7 +43,15 @@ int Game::run(){
     for (int i = 0; i <4; i++) {
 		 Play.draw(tiger[i].tiger_sprite);
 	}
+
 	Play.display();
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+							{
+								int mouseX = Mouse::getPosition(Play).x;
+								int mouseY = Mouse::getPosition(Play).y;
+								std::cout<<mouseX<<"\t"<<mouseY<<endl;
+							}
+
     }
     //setup();        //setup() is in pieces.h. It sets up the name and tiger/goat of players
     //initial_board();    //4 tigers in 4 corners and goats alive=20 in side of board

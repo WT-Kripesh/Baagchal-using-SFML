@@ -18,9 +18,9 @@ public:
     Sprite tiger_sprite;
     void set_texture(){
         this->tiger_sprite.setTexture(tiger_texture);
-        this->tiger_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
-        this->tiger_sprite.setPosition((position/10)*200,(position%10)*110);
-        this->tiger_sprite.setOrigin(sf::Vector2f(50.f, 50.f));
+        this->tiger_sprite.setScale(sf::Vector2f(0.12f, 0.12f));
+        this->tiger_sprite.setPosition(125*(position/10)+280,125*(position%10)+150);
+        this->tiger_sprite.setOrigin(400,346);
     }
 };
 
@@ -38,7 +38,7 @@ public:
     void set_texture(){
         this->goat_sprite.setTexture(goat_texture);
         this->goat_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
-        this->goat_sprite.setOrigin(sf::Vector2f(50.f, 50.f));
+        this->goat_sprite.setOrigin(682/2,584/2);
     }
 };
 
