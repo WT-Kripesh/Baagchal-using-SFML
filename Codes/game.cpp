@@ -17,7 +17,7 @@ int Game::run(Sprite button){
     Tiger tiger[4];
     Goat goat[20];
     Matrix matrix[6][6];        //Neglecting [0][0] and so on
-
+    matrix_initialization(matrix);
     setIndices(tiger,goat);
     set_all_tigerTexture(tiger);
     set_all_goatTexture(goat);
@@ -45,10 +45,13 @@ int Game::run(Sprite button){
     }
     }
     }
+
     Play.clear();
     Play.draw(Pbackground);
     Play.draw(button);
+    draw(Play,matrix,tiger,goat);
     input(Play,matrix);
+    process(Play,matrix,tiger,goat);
 
 	Play.display();
 
