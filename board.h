@@ -1,17 +1,17 @@
 #ifndef BOARD_H_INCLUDED
 #define BOARD_H_INCLUDED
-class Cell{
+class Matrix{
 public:
-    string content="NULL"; //COULD BE TIGER, GOAT OR NULL
+    char content='N';//COULD BE T, G OR N
     int content_index;
     int row,column;
 
-    string content_getter()
+    char content_getter()
     {
         return this->content;
     }
 
-     int index()
+     int indexGetter()
     {
         return this->content_index;
     }

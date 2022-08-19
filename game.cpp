@@ -16,12 +16,12 @@ int Game::run(){
 
     Tiger tiger[4];
     Goat goat[20];
-    Cell cell[6][6];        //Neglecting [0][0] and so on
+    Matrix matrix[6][6];        //Neglecting [0][0] and so on
 
     setIndices(tiger,goat);
     set_all_tigerTexture(tiger);
     set_all_goatTexture(goat);
-    initial_positions(tiger);
+    initial_positions(tiger,matrix);
 
 
     RenderWindow Play(VideoMode(WIDTH, HEIGHT), "PLAY");
@@ -38,7 +38,7 @@ int Game::run(){
     }
     Play.clear();
     Play.draw(Pbackground);
-    input();
+    input(Play,matrix);
 
 	Play.display();
 
