@@ -28,7 +28,7 @@ int main()
 
         case 0:{
             Game Baagchal;
-            if(Baagchal.run()){
+            if(Baagchal.run(menu.homeButton)){
                 error e("Error running game! ");
                 throw e;
             }

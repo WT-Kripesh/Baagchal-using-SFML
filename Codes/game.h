@@ -10,6 +10,6 @@ using namespace sf;
 class Game{
 public:
     Game();
-    int run();
+    int run(Sprite);
 };
 #endif // GAME_H_INCLUDED

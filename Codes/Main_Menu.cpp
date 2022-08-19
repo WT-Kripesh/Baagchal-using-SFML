@@ -1,18 +1,19 @@
 #include "MainMenu.h"
 #include<SFML/Audio.hpp>
+#include<fstream>
 
 MainMenu::MainMenu()
 {
-	font.loadFromFile("Fonts/outline.ttf");
-	for(int i=0;i<Max_main_menu;i++)
+    font.loadFromFile("Fonts/outline.ttf");
+    for(int i=0;i<Max_main_menu;i++)
     {
         mainMenu[i].setFont(font);
         mainMenu[i].setFillColor(Color::Black); //black color
         mainMenu[i].setCharacterSize(70);
-        mainMenu[i].setPosition(400, 150+100*i);
+        mainMenu[i].setPosition(400, 180+100*i);
     }
 	mainMenu[0].setString("Play");
-	mainMenu[1].setPosition(250, 250);
+	mainMenu[1].setPosition(250, 280);
 	mainMenu[1].setString("How to play");
 	mainMenu[2].setString("About");
 	mainMenu[3].setString("Exit");
@@ -20,17 +21,38 @@ MainMenu::MainMenu()
     mainMenu[MainMenuSelected].setFillColor(Color::Blue);
 
 	//set background for Main menu
-	background.setSize(Vector2f(WIDTH, HEIGHT));
-	Maintexture.loadFromFile("Images/background1.jpg");
-	background.setTexture(&Maintexture);
-	//Set background for Options
+	menu_background.setSize(Vector2f(WIDTH, HEIGHT));
+	Maintexture.loadFromFile("Images/menu.jpg");
+	menu_background.setTexture(&Maintexture);
+	//Set background for HowtoPlay
 	background1.setSize(Vector2f(WIDTH, HEIGHT));
-	tex1.loadFromFile("Images/background.jpg");
+	tex1.loadFromFile("Images/howtoplay.jpg");
 	background1.setTexture(&tex1);
 	//Set background for About
 	background2.setSize(Vector2f(WIDTH, HEIGHT));
-	tex2.loadFromFile("Images/neww.jpg");
+	tex2.loadFromFile("Images/about.jpg");
 	background2.setTexture(&tex2);
+	//set homeButtontexture
+    homeButton_tex.loadFromFile("Images/homeButton.png");
+    homeButton.setTexture(homeButton_tex);
+	homeButton.setPosition(25,25);
+  	homeButton.setScale(0.15,0.15);
+	//Set about text
+	std::string detail;
+    std::fstream aboutFile;
+    aboutFile.open(("Images/about.txt"));
+    if(aboutFile)
+    {
+        while(getline(aboutFile, detail))
+        {
+            aboutTextString.append(detail + "\n");
+        }
+    }
+    aboutText.setString(aboutTextString);
+    aboutText.setFont(font);
+    aboutText.setFillColor(sf::Color::Black);
+    aboutText.setCharacterSize(30);
+    aboutText.setPosition(150, 100);
 }
 
 int MainMenu::show(){
@@ -77,7 +99,7 @@ int MainMenu::show(){
 //Draw MainMenu
 void MainMenu::draw(RenderWindow& window) {
     window.clear();
-    window.draw(background);
+    window.draw(menu_background);
 	for (int i = 0; i < Max_main_menu; i++) {
 		window.draw(mainMenu[i]);
 	}
@@ -107,20 +129,30 @@ void MainMenu::MoveDown() {
 }
 
 int MainMenu::Howtoplay(){
-   RenderWindow OPTIONS(VideoMode(WIDTH, HEIGHT), "HOW TO PLAY");
-   while (OPTIONS.isOpen()) {
+   RenderWindow HowtoPlay(VideoMode(WIDTH, HEIGHT), "HOW TO PLAY");
+   while (HowtoPlay.isOpen()) {
         Event aevent;
-        while (OPTIONS.pollEvent(aevent)) {
+        while (HowtoPlay.pollEvent(aevent)) {
             if (aevent.type == Event::Closed) {
-                OPTIONS.close();
+                HowtoPlay.close();
             }
             if (aevent.type == Event::KeyPressed) {
                 if (aevent.key.code == Keyboard::Escape)
-                    OPTIONS.close();
+                    HowtoPlay.close();
+            }
+            int mouseX = Mouse::getPosition(HowtoPlay).x;
+            int mouseY = Mouse::getPosition(HowtoPlay).y;
+            if (homeButton.getGlobalBounds().contains(mouseX, mouseY))
+            {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                HowtoPlay.close();
+            }
         }}
-        OPTIONS.clear();
-        OPTIONS.draw(background1);
-        OPTIONS.display();
+        HowtoPlay.clear();
+        HowtoPlay.draw(background1);
+        HowtoPlay.draw(homeButton);
+        HowtoPlay.display();
 	}
 	show();
 	return 0;
@@ -138,9 +170,20 @@ int MainMenu::About(){
             if (aevent.key.code == Keyboard::Escape) {
                 ABOUT.close();
         }}
+        int mouseX = Mouse::getPosition(ABOUT).x;
+        int mouseY = Mouse::getPosition(ABOUT).y;
+        if (homeButton.getGlobalBounds().contains(mouseX, mouseY))
+        {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {
+            ABOUT.close();
+        }
+        }
         }
         ABOUT.clear();
         ABOUT.draw(background2);
+        ABOUT.draw(aboutText);
+        ABOUT.draw(homeButton);
         ABOUT.display();
     }
     show();

@@ -4,7 +4,7 @@
 #include "gameFunctions.h"
 
 Game::Game(){}
-int Game::run(){
+int Game::run(Sprite button){
 	//Photo to the game
     RectangleShape Pbackground;
 	Pbackground.setSize(Vector2f(WIDTH, HEIGHT));
@@ -30,14 +30,24 @@ int Game::run(){
     while (Play.pollEvent(aevent))
         {
             if (aevent.type == Event::Closed)
-                Play.close();
+                close_window(Play);
     if (aevent.type == Event::KeyPressed) {
             if (aevent.key.code == Keyboard::Escape)
-                Play.close();
+                close_window(Play);
+    }
+    int mouseX = Mouse::getPosition(Play).x;
+    int mouseY = Mouse::getPosition(Play).y;
+    if (button.getGlobalBounds().contains(mouseX, mouseY))
+    {
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        close_window(Play);
+    }
     }
     }
     Play.clear();
     Play.draw(Pbackground);
+    Play.draw(button);
     input(Play,matrix);
 
 	Play.display();

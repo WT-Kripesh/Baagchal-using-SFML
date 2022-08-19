@@ -11,10 +11,12 @@ class MainMenu {
 private:
     int MainMenuSelected;
 	Font font;
-	Text mainMenu[Max_main_menu];
-	RectangleShape background,background1,background2;
-   	Texture Maintexture,tex1,tex2;
+	std::string aboutTextString;
+	Text mainMenu[Max_main_menu],aboutText;
+	RectangleShape menu_background,background1,background2;
+   	Texture Maintexture,tex1,tex2,homeButton_tex;
 public:
+    Sprite homeButton;
 	MainMenu();
 	void draw(RenderWindow& window);
 	void MoveUp();

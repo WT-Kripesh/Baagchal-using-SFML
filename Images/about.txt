@@ -1,0 +1,23 @@
+
+Developers:
+
+1. Javed Ansari  (077BCT033)
+
+2. Kripesh Nihure  (077BCT037)
+
+
+This game was developed by the students 
+
+	of Pulchowk Campus as an academic Project to
+	
+		be submitted as a part of OOP subject Practical 
+
+			offered in Sem ~III of Computer Engineering .
+
+
+The project may not be fully funtional as planned but 
+
+		 we would be happy to get some feedbacks .
+
+
+
