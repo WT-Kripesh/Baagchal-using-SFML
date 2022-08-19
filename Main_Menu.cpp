@@ -43,16 +43,13 @@ int MainMenu::show(){
 	sound2.setBuffer(buffer2);
 
 	//make menu window
-	RenderWindow MENU(VideoMode(WIDTH, HEIGHT), "Main Menu", Style::Default);
+	RenderWindow MENU(VideoMode(WIDTH, HEIGHT), "Main Menu", Style::None);
     while (MENU.isOpen())
 	{
 		draw(MENU);
 		MENU.display();
 		Event event;
 		while (MENU.pollEvent(event)) {
-			if (event.type == Event::Closed) {
-				MENU.close();
-			}
 			if (event.type == Event::KeyReleased) {
 				if (event.key.code == Keyboard::Up) {
 					MoveUp();
