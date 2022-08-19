@@ -8,15 +8,38 @@ using namespace sf;
 class Tiger{
     Texture tiger_texture;
 public:
-    Tiger();
-    void tiger_sprite();
+    Tiger(){
+        if (!tiger_texture.loadFromFile("Images/tiger.png"))
+        {
+            cout << "Error loading from file!"<<endl;
+        }
+    }
+    int position;
+    Sprite tiger_sprite;
+    void set_texture(){
+        this->tiger_sprite.setTexture(tiger_texture);
+        this->tiger_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
+        this->tiger_sprite.setPosition((position/10)*200,(position%10)*110);
+        this->tiger_sprite.setOrigin(sf::Vector2f(50.f, 50.f));
+    }
 };
 
 class Goat{
     Texture goat_texture;
+    Sprite goat_sprite;
+
 public:
-    Goat();
-    void goat_sprite();
+    Goat(){
+        if (!goat_texture.loadFromFile("Images/goat.png"))
+        {
+            cout << "Error loading from file!"<<endl;
+        }
+    }
+    void set_texture(){
+        this->goat_sprite.setTexture(goat_texture);
+        this->goat_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
+        this->goat_sprite.setOrigin(sf::Vector2f(50.f, 50.f));
+    }
 };
 
 void setup(){
