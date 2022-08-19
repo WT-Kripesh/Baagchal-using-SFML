@@ -14,13 +14,16 @@ public:
             cout << "Error loading from file!"<<endl;
         }
     }
-    int position;
+    int row,column;
+    int index;
     Sprite tiger_sprite;
     void set_texture(){
         this->tiger_sprite.setTexture(tiger_texture);
         this->tiger_sprite.setScale(sf::Vector2f(0.12f, 0.12f));
-        this->tiger_sprite.setPosition(125*(position/10)+280,125*(position%10)+150);
         this->tiger_sprite.setOrigin(400,346);
+    }
+    void set_Position(){
+    this->tiger_sprite.setPosition(125*(this->row-1)+280,125*(this->column-1)+150);
     }
 };
 
@@ -35,10 +38,15 @@ public:
             cout << "Error loading from file!"<<endl;
         }
     }
+        int row,column;
+        int index;
     void set_texture(){
         this->goat_sprite.setTexture(goat_texture);
         this->goat_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
         this->goat_sprite.setOrigin(682/2,584/2);
+    }
+    void set_Position(){
+    this->goat_sprite.setPosition(125*(this->row-1)+280,125*(this->column-1)+150);
     }
 };
 

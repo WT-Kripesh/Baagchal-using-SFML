@@ -17,6 +17,5 @@ public:
     }
 };
 
-Cell cell[6][6];
 
 #endif

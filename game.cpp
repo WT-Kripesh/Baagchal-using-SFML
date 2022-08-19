@@ -1,13 +1,7 @@
 #include "game.h"
 #include "Pieces.h"
-
-void initial_positions(Tiger t[4]){
-        t[0].position=0;
-        t[1].position=4;
-        t[2].position=40;
-        t[3].position=44;
-}
-
+#include "board.h"
+#include "gameFunctions.h"
 
 Game::Game(){}
 int Game::run(){
@@ -18,39 +12,36 @@ int Game::run(){
 	back_texture.loadFromFile("Images/board.jpg");
 	Pbackground.setTexture(&back_texture);
 
+
+
     Tiger tiger[4];
     Goat goat[20];
+    Cell cell[6][6];        //Neglecting [0][0] and so on
+
+    setIndices(tiger,goat);
+    set_all_tigerTexture(tiger);
+    set_all_goatTexture(goat);
     initial_positions(tiger);
-    for(int i=0;i<4;i++){
-        tiger[i].set_texture();
-    }
-    for(int i=0;i<20;i++){
-        goat[i].set_texture();
-    }
+
 
     RenderWindow Play(VideoMode(WIDTH, HEIGHT), "PLAY");
     while (Play.isOpen()) {
             Event aevent;
-    while (Play.pollEvent(aevent)) {
+    while (Play.pollEvent(aevent))
+        {
             if (aevent.type == Event::Closed)
                 Play.close();
     if (aevent.type == Event::KeyPressed) {
             if (aevent.key.code == Keyboard::Escape)
                 Play.close();
-    }}
+    }
+    }
     Play.clear();
     Play.draw(Pbackground);
-    for (int i = 0; i <4; i++) {
-		 Play.draw(tiger[i].tiger_sprite);
-	}
+    input();
 
 	Play.display();
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-							{
-								int mouseX = Mouse::getPosition(Play).x;
-								int mouseY = Mouse::getPosition(Play).y;
-								std::cout<<mouseX<<"\t"<<mouseY<<endl;
-							}
+
 
     }
     //setup();        //setup() is in pieces.h. It sets up the name and tiger/goat of players
