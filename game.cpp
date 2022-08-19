@@ -1,4 +1,5 @@
 #include "game.h"
+#include "Pieces.h"
 
 Game::Game(){}
 int Game::run(){
@@ -23,5 +24,8 @@ int Game::run(){
     Play.draw(Pbackground);
     Play.display();
     }
+    setup();        //setup() is in pieces.h. It sets up the name and tiger/goat of players
+    initial_board();    //4 tigers in 4 corners and goats alive=20 in side of board
+    start_game();   //game starting
     return 0;
 }

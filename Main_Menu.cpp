@@ -12,7 +12,8 @@ MainMenu::MainMenu()
         mainMenu[i].setPosition(400, 150+100*i);
     }
 	mainMenu[0].setString("Play");
-	mainMenu[1].setString("Options");
+	mainMenu[1].setPosition(250, 250);
+	mainMenu[1].setString("How to play");
 	mainMenu[2].setString("About");
 	mainMenu[3].setString("Exit");
 	MainMenuSelected = 0;
@@ -65,11 +66,16 @@ int MainMenu::show(){
 				}
 				else if (event.key.code == Keyboard::Return){
                     sound2.play();
-                    cout<<MainMenuSelected<<"\tEnter";
-                    return MainMenuSelected;
+                    cout<<MainMenuSelected<<"\tEnter\n";
+                    MENU.close();
+				}
+				else if(event.key.code == Keyboard::Escape){
+                    MainMenuSelected = 3;
+                    MENU.close();
 				}
     }}
-}
+    }
+    return 0;
 }
 //Draw MainMenu
 void MainMenu::draw(RenderWindow& window) {
@@ -103,8 +109,8 @@ void MainMenu::MoveDown() {
     mainMenu[MainMenuSelected].setCharacterSize(80);
 }
 
-bool MainMenu::Options(){
-   RenderWindow OPTIONS(VideoMode(WIDTH, HEIGHT), "OPTIONS");
+int MainMenu::Howtoplay(){
+   RenderWindow OPTIONS(VideoMode(WIDTH, HEIGHT), "HOW TO PLAY");
    while (OPTIONS.isOpen()) {
         Event aevent;
         while (OPTIONS.pollEvent(aevent)) {
@@ -112,17 +118,18 @@ bool MainMenu::Options(){
                 OPTIONS.close();
             }
             if (aevent.type == Event::KeyPressed) {
-                if (aevent.type == Keyboard::Escape)
+                if (aevent.key.code == Keyboard::Escape)
                     OPTIONS.close();
         }}
         OPTIONS.clear();
         OPTIONS.draw(background1);
         OPTIONS.display();
-	};
-	return true;
+	}
+	show();
+	return 0;
 }
 
-bool MainMenu::About(){
+int MainMenu::About(){
     RenderWindow ABOUT(VideoMode(WIDTH, HEIGHT), "ABOUT");
     while (ABOUT.isOpen()) {
         Event aevent;
@@ -138,6 +145,7 @@ bool MainMenu::About(){
         ABOUT.clear();
         ABOUT.draw(background2);
         ABOUT.display();
-    };
-	return true;
+    }
+    show();
+    return 0;
 }

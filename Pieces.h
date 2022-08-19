@@ -19,4 +19,15 @@ public:
     void goat_sprite();
 };
 
+void setup(){
+    //code
+}
+
+void initial_board(){
+    //code
+
+}
+void start_game(){
+    //code
+}
 #endif // PIECES_H_INCLUDED

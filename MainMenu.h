@@ -19,8 +19,11 @@ public:
 	void draw(RenderWindow& window);
 	void MoveUp();
 	void MoveDown();
-    int show();
-    bool Options();
-    bool About();
+	int show();
+    int Howtoplay();
+    int About();
+    int Selected(){
+        return MainMenuSelected;
+    }
 	~MainMenu(){}
 };
