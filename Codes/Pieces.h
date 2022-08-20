@@ -11,6 +11,7 @@ public:
         int row,column;
         int index;
         static int indexSetter;
+    Sprite tiger_sprite;
     Tiger(){
         index=indexSetter;
         indexSetter++;
@@ -23,16 +24,11 @@ public:
         this->tiger_sprite.setOrigin(400,346);
 
     }
-    Sprite tiger_sprite;
-    void set_texture(){
-        this->tiger_sprite.setTexture(tiger_texture);
-        this->tiger_sprite.setScale(sf::Vector2f(0.12f, 0.12f));
-        this->tiger_sprite.setOrigin(400,346);
-    }
     void set_Position(){
     this->tiger_sprite.setPosition(125*(this->row-1)+280,125*(this->column-1)+150);
     }
 };
+
 int Tiger::indexSetter;
 
 class Goat{
@@ -49,9 +45,6 @@ Goat(){
         {
             cout << "Error loading from file!"<<endl;
         }
-    }
-
-    void set_texture(){
         this->goat_sprite.setTexture(goat_texture);
         this->goat_sprite.setScale(sf::Vector2f(0.15f, 0.15f));
         this->goat_sprite.setOrigin(682/2,584/2);
