@@ -37,7 +37,6 @@ int Game::run(Sprite button){
     Play.draw(button);
     draw(Play,matrix,tiger,goat);
     input(Play,matrix);
-    destination(Play,matrix);
     goat_process(Play,matrix,tiger,goat);
     tiger_process(Play,matrix,tiger,goat);
 
