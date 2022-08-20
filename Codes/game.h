@@ -13,5 +13,6 @@ public:
     Texture back_texture;
     Game();
     int run(Sprite);
+    int sr,sc;
 };
 #endif // GAME_H_INCLUDED

@@ -30,17 +30,15 @@ int Game::run(Sprite button){
                 if (Mouse::isButtonPressed(Mouse::Left)){
                     close_window(Play);
             }
-        }}
+            }
+        }
 
     Play.clear();
     Play.draw(Pbackground);
     Play.draw(button);
     draw(Play,matrix,tiger,goat);
-    input(Play,matrix);
-    destination(Play,matrix);
-    goat_process(Play,matrix,tiger,goat);
-    tiger_process(Play,matrix,tiger,goat);
-
+    input(Play,matrix,sr,sc);
+    process(Play,matrix,tiger,goat,sr,sc);
 	Play.display();
     }
     return 0;

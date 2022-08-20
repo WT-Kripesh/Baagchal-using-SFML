@@ -53,16 +53,4 @@ Goat(){
     }
 };
 int Goat::indexSetter;
-
-void setup(){
-    //code
-}
-
-void initial_board(){
-    //code
-
-}
-void start_game(){
-    //code
-}
 #endif // PIECES_H_INCLUDED

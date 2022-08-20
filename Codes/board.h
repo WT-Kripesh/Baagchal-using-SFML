@@ -4,7 +4,7 @@
 class Matrix{
 public:
     char content='N';//COULD BE T, G , D & N
-    int content_index;
+    int tiger_index,goat_index;
     int row,column;
     static int i,j;
     Matrix(){
@@ -16,7 +16,7 @@ public:
     }
 };
 
-int Matrix::i;
-int Matrix::j;
+int Matrix::i=0;
+int Matrix::j=0;
 
 #endif
