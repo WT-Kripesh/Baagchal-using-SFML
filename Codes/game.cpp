@@ -15,15 +15,7 @@ int Game::run(Sprite button){
     Tiger tiger[4];
     Goat goat[20];
     Matrix matrix[6][6];        //Neglecting [0][0] and so on
-    //matrix_initialization(matrix);
-    for(int i=1;i<=5;i++){
-        for(int j=1;j<=5;j++){
-            cout<<matrix[i][j].row<<" , ";
-            cout<<matrix[i][j].column;
-    }
-    cout<<endl;
-    }
-    setIndices(tiger,goat);
+
     set_all_tigerTexture(tiger);
     set_all_goatTexture(goat);
     initial_positions(tiger,matrix);
@@ -36,7 +28,7 @@ int Game::run(Sprite button){
                     if (aevent.key.code == Keyboard::Escape)
                         close_window(Play);
             }
-            if (button.getGlobalBounds().contains(mouse.x, mouse.y)){
+            if (button.getGlobalBounds().contains(Mouse::getPosition(Play).x, Mouse::getPosition(Play).y)){
                 if (Mouse::isButtonPressed(Mouse::Left)){
                     close_window(Play);
             }

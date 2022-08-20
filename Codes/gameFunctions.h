@@ -4,13 +4,6 @@
  int selectedRow=0;
  int selectedColumn=0;
 
- void setIndices(Tiger t[4], Goat g[20])
- {
- for(int i=0;i<4;i++){t[i].index=i;}
- for(int i=0;i<20;i++){g[i].index=i;}
- }
-
-
  void set_all_tigerTexture(Tiger t[4])
  {
      for(int i=0;i<4;i++)
@@ -44,14 +37,6 @@
                 }
         }
         }
-    }
-
-    void matrix_initialization(Matrix matrix[6][6]){
-    for(int i=1;i<=5;i++){
-        for(int j=1;j<=5;j++){
-            matrix[i][j].row=i;
-            matrix[i][j].column=j;
-    }}
     }
 
     int getPixelX(int row){return  280+ ((row - 1) * 125);}

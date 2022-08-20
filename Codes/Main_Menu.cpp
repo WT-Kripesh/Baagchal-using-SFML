@@ -136,7 +136,7 @@ int MainMenu::Howtoplay(){
                 if (aevent.key.code == Keyboard::Escape)
                     HowtoPlay.close();
             }
-            if (homeButton.getGlobalBounds().contains(mouse.x, mouse.y)){
+            if (homeButton.getGlobalBounds().contains(Mouse::getPosition(HowtoPlay).x, Mouse::getPosition(HowtoPlay).y)){
                 if (Mouse::isButtonPressed(Mouse::Left)){
                     HowtoPlay.close();
             }
@@ -160,7 +160,7 @@ int MainMenu::About(){
                 if (aevent.key.code == Keyboard::Escape) {
                     ABOUT.close();
             }}
-            if (homeButton.getGlobalBounds().contains(mouse.x, mouse.y)){
+            if (homeButton.getGlobalBounds().contains(Mouse::getPosition(ABOUT).x, Mouse::getPosition(ABOUT).y)){
                 if (Mouse::isButtonPressed(Mouse::Left)){
                     ABOUT.close();
             }
