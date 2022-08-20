@@ -9,6 +9,8 @@ using namespace sf;
 
 class Game{
 public:
+    RectangleShape Pbackground;
+    Texture back_texture;
     Game();
     int run(Sprite);
 };

@@ -3,7 +3,7 @@
 
 class Matrix{
 public:
-    char content='N';//COULD BE T, G OR N
+    char content='N';//COULD BE T, G , D & N
     int content_index;
     int row,column;
     static int i,j;

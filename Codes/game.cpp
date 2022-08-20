@@ -3,19 +3,19 @@
 #include "board.h"
 #include "gameFunctions.h"
 
-Game::Game(){}
-int Game::run(Sprite button){
-	//Photo to the game
-    RectangleShape Pbackground;
+Game::Game(){
+    //Photo to the game
 	Pbackground.setSize(Vector2f(WIDTH, HEIGHT));
-	Texture back_texture;
 	back_texture.loadFromFile("Images/board.jpg");
 	Pbackground.setTexture(&back_texture);
+}
+
+
+int Game::run(Sprite button){
 
     Tiger tiger[4];
     Goat goat[20];
     Matrix matrix[6][6];        //Neglecting [0][0] and so on
-
     initial_positions(tiger,matrix);
 
     RenderWindow Play(VideoMode(WIDTH, HEIGHT), "PLAY",Style::None);
@@ -37,7 +37,9 @@ int Game::run(Sprite button){
     Play.draw(button);
     draw(Play,matrix,tiger,goat);
     input(Play,matrix);
-    process(Play,matrix,tiger,goat);
+    destination(Play,matrix);
+    goat_process(Play,matrix,tiger,goat);
+    tiger_process(Play,matrix,tiger,goat);
 
 	Play.display();
     }

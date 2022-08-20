@@ -25,10 +25,9 @@ public:
 
     }
     void set_Position(){
-    this->tiger_sprite.setPosition(125*(this->row-1)+280,125*(this->column-1)+150);
+        this->tiger_sprite.setPosition(125*(this->row-1)+280,125*(this->column-1)+150);
     }
 };
-
 int Tiger::indexSetter;
 
 class Goat{
