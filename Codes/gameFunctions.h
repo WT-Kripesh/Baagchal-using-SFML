@@ -4,22 +4,6 @@
  int selectedRow=0;
  int selectedColumn=0;
 
- void set_all_tigerTexture(Tiger t[4])
- {
-     for(int i=0;i<4;i++)
-        {
-        t[i].set_texture();
-        }
- }
-
- void set_all_goatTexture(Goat g[20])
-    {
-        for(int i=0;i<20;i++)
-            {
-        g[i].set_texture();
-            }
-    }
-
  void initial_positions(Tiger t[4], Matrix matrix[6][6])
     {
         int tigerCount=0;
@@ -50,15 +34,11 @@
 									{
 										if(matrix[i][j].content=='T')
                                             {
-                                                //Tiger tdraw=tiger[matrix[i][j].indexGetter()];
-                                                tiger[matrix[i][j].content_index].set_texture();
                                                 tiger[matrix[i][j].content_index].set_Position();
                                                 Play.draw(tiger[matrix[i][j].content_index].tiger_sprite);
                                             }
                                             else if(matrix[i][j].content=='G')
                                             {
-
-                                                goat[matrix[i][j].content_index].set_texture();
                                                 goat[matrix[i][j].content_index].set_Position();
                                                 Play.draw(goat[matrix[i][j].content_index].goat_sprite);
                                             }
@@ -106,6 +86,7 @@ int goat_count=0;
             //selectedRow=0;selectedColumn=0;     //Selection reset
           }
         }
+
 void close_window(RenderWindow& play){
     Font font;
     font.loadFromFile("Fonts/Contra.ttf");

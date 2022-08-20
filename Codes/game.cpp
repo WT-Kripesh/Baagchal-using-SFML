@@ -16,8 +16,6 @@ int Game::run(Sprite button){
     Goat goat[20];
     Matrix matrix[6][6];        //Neglecting [0][0] and so on
 
-    set_all_tigerTexture(tiger);
-    set_all_goatTexture(goat);
     initial_positions(tiger,matrix);
 
     RenderWindow Play(VideoMode(WIDTH, HEIGHT), "PLAY",Style::None);
