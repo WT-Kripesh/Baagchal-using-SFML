@@ -7,7 +7,7 @@ private:
     char msg[25];
 public:
     error(){}
-    error(char err[]){strcpy(msg,err);}
+    error(const char err[]){strcpy(msg,err);}
     void error_msg(){
         cerr<<msg<<endl;
     }

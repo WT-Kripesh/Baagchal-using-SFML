@@ -50,7 +50,6 @@ MainMenu::MainMenu()
     }
     aboutText.setString(aboutTextString);
     aboutText.setFont(font);
-    aboutText.setFillColor(sf::Color::Black);
     aboutText.setCharacterSize(30);
     aboutText.setPosition(150, 100);
 }
@@ -129,24 +128,17 @@ void MainMenu::MoveDown() {
 }
 
 int MainMenu::Howtoplay(){
-   RenderWindow HowtoPlay(VideoMode(WIDTH, HEIGHT), "HOW TO PLAY");
+   RenderWindow HowtoPlay(VideoMode(WIDTH, HEIGHT), "HOW TO PLAY",Style::None);
    while (HowtoPlay.isOpen()) {
         Event aevent;
         while (HowtoPlay.pollEvent(aevent)) {
-            if (aevent.type == Event::Closed) {
-                HowtoPlay.close();
-            }
             if (aevent.type == Event::KeyPressed) {
                 if (aevent.key.code == Keyboard::Escape)
                     HowtoPlay.close();
             }
-            int mouseX = Mouse::getPosition(HowtoPlay).x;
-            int mouseY = Mouse::getPosition(HowtoPlay).y;
-            if (homeButton.getGlobalBounds().contains(mouseX, mouseY))
-            {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-            {
-                HowtoPlay.close();
+            if (homeButton.getGlobalBounds().contains(mouse.x, mouse.y)){
+                if (Mouse::isButtonPressed(Mouse::Left)){
+                    HowtoPlay.close();
             }
         }}
         HowtoPlay.clear();
@@ -159,29 +151,25 @@ int MainMenu::Howtoplay(){
 }
 
 int MainMenu::About(){
-    RenderWindow ABOUT(VideoMode(WIDTH, HEIGHT), "ABOUT");
+    int x=140;
+    RenderWindow ABOUT(VideoMode(WIDTH, HEIGHT), "ABOUT",Style::None);
     while (ABOUT.isOpen()) {
         Event aevent;
         while (ABOUT.pollEvent(aevent)) {
-            if (aevent.type == Event::Closed) {
-                ABOUT.close();
+            if (aevent.type == Event::KeyPressed) {
+                if (aevent.key.code == Keyboard::Escape) {
+                    ABOUT.close();
+            }}
+            if (homeButton.getGlobalBounds().contains(mouse.x, mouse.y)){
+                if (Mouse::isButtonPressed(Mouse::Left)){
+                    ABOUT.close();
+            }
+            }
         }
-        if (aevent.type == Event::KeyPressed) {
-            if (aevent.key.code == Keyboard::Escape) {
-                ABOUT.close();
-        }}
-        int mouseX = Mouse::getPosition(ABOUT).x;
-        int mouseY = Mouse::getPosition(ABOUT).y;
-        if (homeButton.getGlobalBounds().contains(mouseX, mouseY))
-        {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {
-            ABOUT.close();
-        }
-        }
-        }
+        x+=10;
         ABOUT.clear();
         ABOUT.draw(background2);
+        aboutText.setFillColor(Color(x-40,x+50,x));
         ABOUT.draw(aboutText);
         ABOUT.draw(homeButton);
         ABOUT.display();
