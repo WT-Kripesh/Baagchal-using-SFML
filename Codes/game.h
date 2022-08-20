@@ -3,16 +3,40 @@
 
 #include <SFML/Graphics.hpp>
 #include<SFML/Audio.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Text.hpp>
+
+#include "Loadboard.h"
 #include "MainMenu.h"
+#include "quitGame.h"
+#include <unistd.h>
+#include <unordered_map>
 
 using namespace sf;
 
 class Game{
 public:
-    RectangleShape Pbackground;
-    Texture back_texture;
+    Texture goatWinTexture,tigerWinTexture,homeButtonTexture;
+    RectangleShape goatWinImage,tigerWinImage,homeButtonImage;
+    Event event{};
+    Goat goat[20];
+    Board board;
+    int goatChosen,goatEaten;
+    bool gameOver,tigerTurn=true;
+    bool tigerWin,goatWin;
+    Vector2i pos;
+    bool quit;
+
+    void getBestMove();
     Game();
-    int run(Sprite);
-    int sr,sc;
+    int run();
+    void processEvents();
+    void handlePlayerInput(sf::Keyboard::Key & );
+    void checkGameOver();
+    void goatWins();
+    void tigerWins();
+protected:
+    sf::RenderWindow mWindow;
 };
-#endif // GAME_H_INCLUDED
+#endif
