@@ -1,7 +1,7 @@
 #ifndef GAMEFUNCTIONS_H_INCLUDED
 #define GAMEFUNCTIONS_H_INCLUDED
 
-<<<<<<< HEAD
+
 void initial_positions(Tiger t[4], Matrix matrix[6][6])
 {
     int tigerCount=0;
@@ -19,101 +19,8 @@ void initial_positions(Tiger t[4], Matrix matrix[6][6])
             }
     }
     }
-=======
- int selectedRow=0;
- int selectedColumn=0;
-
-
- void initial_positions(Tiger t[4], Matrix matrix[6][6])
-    {
-        int tigerCount=0;
-        for(int i=1;i<=5;i++)
-        {
-        for(int j=1;j<=5;j++)
-        {
-            if((i==1 || i==5) && (j==1 || j==5))
-                {
-                    t[tigerCount].row=i;
-                    t[tigerCount].column=j;
-                    matrix[i][j].content='T';
-                    matrix[i][j].content_index=tigerCount;
-                    tigerCount++;
-                }
-        }
-        }
-    }
-
-    int getPixelX(int row){return  280+ ((row - 1) * 125);}
-    int getPixelY(int column){return  150+ ((column - 1) * 125);}
-
-    void draw(RenderWindow& Play, Matrix matrix[6][6],Tiger tiger[4],Goat goat[20])
-    {
-        for (int i = 1; i <= 5; i++)
-        {
-            for (int j = 0; j <= 5; j++)
-            {
-                if(matrix[i][j].content=='T')
-                    {
-                        tiger[matrix[i][j].content_index].set_Position();
-                        Play.draw(tiger[matrix[i][j].content_index].tiger_sprite);
-                    }
-                    else if(matrix[i][j].content=='G')
-                    {
-                        goat[matrix[i][j].content_index].set_Position();
-                        Play.draw(goat[matrix[i][j].content_index].goat_sprite);
-                    }
-                    else{//Draws nothing}
-    }
-        }
-    }
-    }
-
-    void input(RenderWindow& Play, Matrix matrix[6][6]){
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-							{
-								int mouseX = Mouse::getPosition(Play).x;
-								int mouseY = Mouse::getPosition(Play).y;
-								for (int i = 1; i <= 5; i++)
-								{
-									for (int j = 1; j <= 5; j++)
-									{
-										if (((mouseX >= (getPixelX(matrix[i][j].row)-50)) && (mouseX <= (getPixelX(matrix[i][j].row)+50)))  && ((mouseY >= (getPixelY(matrix[i][j].column)-50)) && (mouseY <= (getPixelX(matrix[i][j].column)+50))))
-										{
-											selectedRow = i;
-											selectedColumn = j;
-										}
-									}
-								}
-cout<<selectedRow<<"\t"<<selectedColumn<<endl;
-
-							}
-    }
-
-int goat_count=0;
-bool goat_turn=true,tiger_turn=false;
-void goat_process(RenderWindow& Play, Matrix matrix[6][6],Tiger tiger[4],Goat goat[20])
-{
- //Input Goat
-matrix[0][0].content='X';
-  if(matrix[selectedRow][selectedColumn].content=='N' && goat_count<20 && goat_turn)
-  {
-    goat[goat_count].row=selectedRow;
-    goat[goat_count].column=selectedColumn;
-    matrix[selectedRow][selectedColumn].content='G';
-    matrix[selectedRow][selectedColumn].content_index=goat_count;
-    matrix[selectedRow][selectedColumn].row=selectedRow;
-    matrix[selectedRow][selectedColumn].column=selectedColumn;
-    goat_count++;
-    goat_turn=false;
-    //cout<<goat_count<<endl;
-    selectedRow=0;selectedColumn=0;     //Selection reset
-  }
-  if(matrix[selectedRow][selectedColumn].content=='G' && goat_turn && goat_count==20){}
->>>>>>> 1e5da990c128e57d1059c44d494d935f9830e376
 }
 
-
-<<<<<<< HEAD
 void draw(RenderWindow& Play, Matrix matrix[6][6],Tiger tiger[4],Goat goat[20])
 {
     for (int i = 1; i <= 5; i++)
@@ -206,37 +113,7 @@ void process(RenderWindow& Play, Matrix matrix[6][6],Tiger tiger[4],Goat goat[20
                 tiger[matrix[selected_row][selected_col].tiger_index].column=selected_col;
 
                 matrix[old_selectedRow][old_selectedColumn].content='N';
-=======
-void tiger_process(RenderWindow& Play, Matrix matrix[6][6],Tiger tiger[4],Goat goat[20])
-{
-tiger_turn=!(goat_turn);
-matrix[0][0].content='X';
-//if(tiger_turn){cout<<"Tiger turn";}
-//else           {cout<<"Goat turn";}
-  if(matrix[selectedRow][selectedColumn].content=='T' && tiger_turn)
-  {
-//      old_selectedRow=tiger[matrix[selectedRow][selectedColumn].content_index].row;
-//      old_selectedColumn=tiger[matrix[selectedRow][selectedColumn].content_index].column;
-//
-//
-//    tiger[tiger_count].row=selectedRow;
-//    tiger[tiger_count].column=selectedColumn;
-//
-//    destination(Tiger& tiger[matrix[selectedRow][selectedColumn].content_index]);
-//    if(selectedRow!=old_selectedRow && selectedColumn!=old_selectedColumn && tiger_turn){
-//    matrix[selectedRow][selectedColumn].content='T';
-//    matrix[selectedRow][selectedColumn].row=selectedRow;
-//    matrix[selectedRow][selectedColumn].column=selectedColumn;
-//    tiger[matrix[selectedRow][selectedColumn].content_index].row=selectedRow;
-//    tiger[matrix[selectedRow][selectedColumn].content_index].column=selectedColumn;
-//
-//    matrix[old_selectedRow][old_selectedColumn].content='N';
-//    matrix[old_selectedRow][old_selectedColumn].row=selectedRow;
-//    matrix[old_selectedRow][old_selectedColumn].column=selectedColumn;
-    goat_turn=true;
-}
-}
->>>>>>> 1e5da990c128e57d1059c44d494d935f9830e376
+
 
                 goat_turn=true;
                 old_selectedRow=0,old_selectedColumn=0;
@@ -245,13 +122,6 @@ matrix[0][0].content='X';
 }
 
 
-<<<<<<< HEAD
-=======
-    //cout<<goat_count<<endl;
-    //selectedRow=0;selectedColumn=0;     //Selection reset
-
-
->>>>>>> 1e5da990c128e57d1059c44d494d935f9830e376
 
 void close_window(RenderWindow& play){
     Font font;
