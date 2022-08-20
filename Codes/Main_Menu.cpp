@@ -151,7 +151,7 @@ int MainMenu::Howtoplay(){
 }
 
 int MainMenu::About(){
-    int x=0;
+    int x=10;
     RenderWindow ABOUT(VideoMode(WIDTH, HEIGHT), "ABOUT",Style::None);
     while (ABOUT.isOpen()) {
         Event aevent;
@@ -167,9 +167,8 @@ int MainMenu::About(){
             }
         }
         x++;
-        ABOUT.clear(Color(255,253,208));
-        //ABOUT.draw(background2);
-        aboutText.setFillColor(Color(x-40,x+50,0));
+        ABOUT.clear(Color(230, 230, 250));
+        aboutText.setFillColor(Color(x, 0, 255));
         ABOUT.draw(aboutText);
         ABOUT.draw(homeButton);
         ABOUT.display();
