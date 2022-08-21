@@ -142,19 +142,47 @@ void Game::checkGameOver(sf::RenderWindow& Window)//checks if the game is over
 void Game::goatWins()
 {
     sf::RenderWindow mWindow1;
-    mWindow1.create(sf::VideoMode(800, 500), "Congrats");
+    mWindow1.create(sf::VideoMode(800, 600), "Congrats");
+    while(mWindow1.isOpen()){
     mWindow1.clear();
     mWindow1.draw(goatWinImage);
     mWindow1.draw(homeButtonImage);
     mWindow1.display();
+    Event aevent;
+        while (mWindow1.pollEvent(aevent)) {
+            if (aevent.type == Event::KeyPressed) {
+                if (aevent.key.code == Keyboard::Escape)
+                    mWindow1.close();
+            }
+            if (homeButtonImage.getGlobalBounds().contains(Mouse::getPosition(mWindow1).x, Mouse::getPosition(mWindow1).y)){
+                if (Mouse::isButtonPressed(Mouse::Left)){
+                    mWindow1.close();
+            }
+    }
+}
+    }
 }
 
 void Game::tigerWins()
 {
     sf::RenderWindow mWindow1;
-    mWindow1.create(sf::VideoMode(800, 500), "Congrats");
+    mWindow1.create(sf::VideoMode(800, 600), "Congrats");
+    while(mWindow1.isOpen()){
     mWindow1.clear();
     mWindow1.draw(tigerWinImage);
     mWindow1.draw(homeButtonImage);
     mWindow1.display();
+     Event aevent;
+        while (mWindow1.pollEvent(aevent)) {
+            if (aevent.type == Event::KeyPressed) {
+                if (aevent.key.code == Keyboard::Escape)
+                    mWindow1.close();
+            }
+            if (homeButtonImage.getGlobalBounds().contains(Mouse::getPosition(mWindow1).x, Mouse::getPosition(mWindow1).y)){
+                if (Mouse::isButtonPressed(Mouse::Left)){
+                    mWindow1.close();
+            }
+    }
+}
+    }
 }
