@@ -28,12 +28,12 @@ Board::Board() //Constructor
     tigerText.setStyle(sf::Text::Bold);
     tigerText.setString("TIGER'S TURN");
     goatText.setString("GOAT'S TURN");
-    tigerText.setCharacterSize(26);
-    goatText.setCharacterSize(26);
+    tigerText.setCharacterSize(40);
+    goatText.setCharacterSize(40);
     tigerText.setFillColor(sf::Color::Red);
     goatText.setFillColor(sf::Color::Red);
-    tigerText.setPosition(40,150);
-    goatText.setPosition(40,150);
+    tigerText.setPosition(500,30);
+    goatText.setPosition(500,30);
     goatWinText.setPosition(1000,400);
     isReleased=false;
     isMove=false;
@@ -45,8 +45,8 @@ Board::Board() //Constructor
     oldPos=sf::Vector2i (75,30);
     goatsAtt[0].setCharacterSize(50);
     goatsAtt[1].setCharacterSize(50);
-    goatsAtt[0].setPosition(1240,335);
-    goatsAtt[1].setPosition(1220,435);
+    goatsAtt[0].setPosition(1200,335);
+    goatsAtt[1].setPosition(100,335);
     goatsAtt[0].setFont(font);
     goatsAtt[1].setFont(font);
     normalMoveBuffer.loadFromFile("Audio/dot.wav");
@@ -83,10 +83,10 @@ void Board::render(sf::RenderWindow &mWindow,Goat *goat,const bool *tigerFlag,bo
 {
     goatsAtt[1].setString(std::to_string(goatsInHand));
     goatsAtt[0].setString(std::to_string(goatsEaten));
-    if(goatsInHand>9 and goatsInHand<20 and goatsInHand!=11)
-        goatsAtt[1].setPosition(10,435);
-    else if(goatsInHand<10 or goatsInHand==11)
-        goatsAtt[1].setPosition(10,435);
+//    if(goatsInHand>9 and goatsInHand<20 and goatsInHand!=11)
+//        goatsAtt[1].setPosition(40,335);
+//    else if(goatsInHand<10 or goatsInHand==11)
+//        goatsAtt[1].setPosition(30,335);
     mWindow.clear(Color::White);
     mWindow.draw(boardImage);//renders the board image
     mWindow.draw(goatsAtt[0]);
