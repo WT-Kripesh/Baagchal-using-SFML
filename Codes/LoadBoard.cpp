@@ -22,18 +22,18 @@ bool search(std::vector<Cell> list,Cell cell)
 Board::Board() //Constructor
 {
     position=0;
-    font.loadFromFile("Fonts/font.ttf");//font for text
+    font.loadFromFile("Fonts/Contra.ttf");//font for text
     tigerText.setFont(font);
     goatText.setFont(font);
     tigerText.setStyle(sf::Text::Bold);
     tigerText.setString("TIGER'S TURN");
     goatText.setString("GOAT'S TURN");
-    tigerText.setCharacterSize(42);
-    goatText.setCharacterSize(42);
+    tigerText.setCharacterSize(26);
+    goatText.setCharacterSize(26);
     tigerText.setFillColor(sf::Color::Red);
     goatText.setFillColor(sf::Color::Red);
-    tigerText.setPosition(965,225);
-    goatText.setPosition(980,225);
+    tigerText.setPosition(40,150);
+    goatText.setPosition(40,150);
     goatWinText.setPosition(1000,400);
     isReleased=false;
     isMove=false;
@@ -61,7 +61,7 @@ Board::Board() //Constructor
     boardTexture.loadFromFile("Images/board1.jpg");
     boardImage.setTexture(&boardTexture);
     boardImage.setPosition(0, 0);
-
+    boardImage.setSize(sf::Vector2f(1380, 850));
 
     //Tiger initialization
     int j=0;//used for tiger array
@@ -82,12 +82,13 @@ Board::Board() //Constructor
 void Board::render(sf::RenderWindow &mWindow,Goat *goat,const bool *tigerFlag,bool goatWin,bool tigerWin,int goatsInHand,int goatsEaten)//Renders on the screen
 {
 //    *tigerFlag=false;
-    goatsAtt[1].setString(std::to_string(goatsInHand));
-    goatsAtt[0].setString(std::to_string(goatsEaten));
-    if(goatsInHand>9 and goatsInHand<20 and goatsInHand!=11)
-        goatsAtt[1].setPosition(1020,435);
-    else if(goatsInHand<10 or goatsInHand==11)
-        goatsAtt[1].setPosition(1020,435);
+//    goatsAtt[1].setString(std::to_string(goatsInHand));
+//    goatsAtt[0].setString(std::to_string(goatsEaten));
+//    if(goatsInHand>9 and goatsInHand<20 and goatsInHand!=11)
+//        goatsAtt[1].setPosition(1020,435);
+//    else if(goatsInHand<10 or goatsInHand==11)
+//        goatsAtt[1].setPosition(1020,435);
+    mWindow.clear(Color::White);
     mWindow.draw(boardImage);//renders the board image
     mWindow.draw(goatsAtt[0]);
     mWindow.draw(goatsAtt[1]);

@@ -2,7 +2,7 @@
 #include "tigers.h"
 Tiger::Tiger()
 {
-    texture.loadFromFile("Media/Images/tiger.jpg");
+    texture.loadFromFile("Images/tiger.png");
     image.setTexture(&texture);
     image.setRadius(40);
 }
