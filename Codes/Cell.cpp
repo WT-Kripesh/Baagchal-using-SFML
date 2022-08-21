@@ -6,8 +6,8 @@ Cell::Cell()
     state=EMPTY;
 }
 void Cell ::setCoord(int i) {
-    coord.x=(i%5)*120+447;
-    coord.y=(i/5)*120+185;
+    coord.x=(i%5)*128+400;
+    coord.y=(i/5)*128+140;
 }
 STATE Cell::getState()
 {
