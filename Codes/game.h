@@ -33,7 +33,7 @@ public:
     int run();
     void processEvents();
     void handlePlayerInput(sf::Keyboard::Key & );
-    void checkGameOver();
+    void checkGameOver(RenderWindow&);
     void goatWins();
     void tigerWins();
 protected:

@@ -115,22 +115,24 @@ int Game::run()//main game loop
         processEvents();
         if(!gameOver)
             board.render(mWindow,&goat[0],&tigerTurn,tigerWin,goatWin,20-goatChosen,goatEaten);
-        checkGameOver();
+        checkGameOver(mWindow);
         mWindow.display();
     }
     return 0;
 }
 
-void Game::checkGameOver()//checks if the game is over
+void Game::checkGameOver(sf::RenderWindow& Window)//checks if the game is over
 {
     if(goatEaten>=5 )
     {
         gameOver=true;
+        Window.close();
         tigerWins();
     }
     if(board.goatWin())
     {
         gameOver=true;
+        Window.close();
         goatWins();
     }
 }
@@ -139,16 +141,20 @@ void Game::checkGameOver()//checks if the game is over
 
 void Game::goatWins()
 {
-    mWindow.clear();
-    mWindow.draw(goatWinImage);
-    mWindow.draw(homeButtonImage);
-    mWindow.display();
+    sf::RenderWindow mWindow1;
+    mWindow1.create(sf::VideoMode(800, 500), "Congrats");
+    mWindow1.clear();
+    mWindow1.draw(goatWinImage);
+    mWindow1.draw(homeButtonImage);
+    mWindow1.display();
 }
 
 void Game::tigerWins()
 {
-    mWindow.clear();
-    mWindow.draw(tigerWinImage);
-    mWindow.draw(homeButtonImage);
-    mWindow.display();
+    sf::RenderWindow mWindow1;
+    mWindow1.create(sf::VideoMode(800, 500), "Congrats");
+    mWindow1.clear();
+    mWindow1.draw(tigerWinImage);
+    mWindow1.draw(homeButtonImage);
+    mWindow1.display();
 }
