@@ -1,7 +1,7 @@
 #include "game.h"
 
 Game::Game(){
-    mWindow.create(sf::VideoMode(WIDTH, HEIGHT), "Baagchaal", sf::Style::Default);
+    mWindow.create(sf::VideoMode(1380, 850), "Baagchaal", sf::Style::Default);
     goatChosen=0;
     tigerTurn=false;
     tigerWin=false;

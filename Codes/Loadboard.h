@@ -21,6 +21,7 @@ public:
     Cell initCell,finalCell;
     sf::Texture boardTexture;
     sf::RectangleShape boardImage;
+    sf::Sprite homeButton;
     sf::Text goatsAtt[2];
     bool isMove,isReleased,moveCompleted,isTigerPressed,isGoatReleased,isGoatPressed,goatEatenMove;
     Tiger tiger[4];
@@ -46,7 +47,6 @@ public:
     void goatMove(sf::Event & ,sf::Vector2i &,Goat *goat);//for the movement  of the goats
     bool isClosed(Cell &_cell);//checks if the cell is closed
     int noOfClosedCell();//return the number of closed cell
-
 
     std::map <int, std::vector<Cell>> getTigerMoves() {
         std::map<int, std::vector<Cell>> moves;

@@ -30,12 +30,12 @@ MainMenu::MainMenu()
 	background1.setTexture(&tex1);
 	//Set background for About
 	background2.setSize(Vector2f(WIDTH, HEIGHT));
-	tex2.loadFromFile("Images/about.jpg");
+	tex2.loadFromFile("Images/aboutus.jpg");
 	background2.setTexture(&tex2);
 	//set homeButtontexture
     homeButton_tex.loadFromFile("Images/homeButton.png");
     homeButton.setTexture(homeButton_tex);
-	homeButton.setPosition(25,25);
+	homeButton.setPosition(925,25);
   	homeButton.setScale(0.15,0.15);
 	//Set about text
 	std::string detail;
@@ -143,6 +143,7 @@ int MainMenu::Howtoplay(){
         }}
         HowtoPlay.clear();
         HowtoPlay.draw(background1);
+      //  homeButton.setPosition(1025,25);
         HowtoPlay.draw(homeButton);
         HowtoPlay.display();
 	}

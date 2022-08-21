@@ -22,7 +22,7 @@ bool search(std::vector<Cell> list,Cell cell)
 Board::Board() //Constructor
 {
     position=0;
-    font.loadFromFile("Media/Fonts/font.ttf");//font for text
+    font.loadFromFile("Fonts/font.ttf");//font for text
     tigerText.setFont(font);
     goatText.setFont(font);
     tigerText.setStyle(sf::Text::Bold);
@@ -49,19 +49,18 @@ Board::Board() //Constructor
     goatsAtt[1].setPosition(1220,435);
     goatsAtt[0].setFont(font);
     goatsAtt[1].setFont(font);
-    normalMoveBuffer.loadFromFile("Media/Sound/tyak.wav");
+    normalMoveBuffer.loadFromFile("Audio/dot.wav");
     normalMoveSound.setBuffer(normalMoveBuffer);
-    goatEatenMoveBuffer.loadFromFile("Media/Sound/swapp.wav");
+    goatEatenMoveBuffer.loadFromFile("Audio/goat.wav");
     goatEatenMoveSound.setBuffer(goatEatenMoveBuffer);
     for(int i=0;i<25;i++)
     {
         (cell+i)->setCoord(i);//sets the co ordinates
         goatEatenMoves.push_back(cell[i]);//just because the vector wont be empty  at the beginning
     }
-    boardTexture.loadFromFile("Media/Images/board1.jpg");
+    boardTexture.loadFromFile("Images/board1.jpg");
     boardImage.setTexture(&boardTexture);
     boardImage.setPosition(0, 0);
-    boardImage.setSize(sf::Vector2f(WIDTH, HEIGHT));
 
 
     //Tiger initialization
@@ -86,9 +85,9 @@ void Board::render(sf::RenderWindow &mWindow,Goat *goat,const bool *tigerFlag,bo
     goatsAtt[1].setString(std::to_string(goatsInHand));
     goatsAtt[0].setString(std::to_string(goatsEaten));
     if(goatsInHand>9 and goatsInHand<20 and goatsInHand!=11)
-        goatsAtt[1].setPosition(1220,435);
+        goatsAtt[1].setPosition(1020,435);
     else if(goatsInHand<10 or goatsInHand==11)
-        goatsAtt[1].setPosition(1220,435);
+        goatsAtt[1].setPosition(1020,435);
     mWindow.draw(boardImage);//renders the board image
     mWindow.draw(goatsAtt[0]);
     mWindow.draw(goatsAtt[1]);
