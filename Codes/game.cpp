@@ -15,14 +15,14 @@ Game::Game(){
     homeButtonImage.setTexture(&homeButtonTexture);
     homeButtonImage.setPosition(25,25);
     homeButtonImage.setSize(Vector2f(0.15,0.17));
-    tigerWinTexture.loadFromFile("Media/Images/tigerWins.jpg");
+    tigerWinTexture.loadFromFile("Images/tigerWins.jpg");
     tigerWinImage.setTexture(&tigerWinTexture);
     tigerWinImage.setPosition(0,0);
-    tigerWinImage.setSize(Vector2f(WIDTH, HEIGHT));
-    goatWinTexture.loadFromFile("Media/Images/goatWins.jpg");
+    tigerWinImage.setSize(Vector2f(800,600));
+    goatWinTexture.loadFromFile("Images/goatWins.jpg");
     goatWinImage.setTexture(&goatWinTexture);
     goatWinImage.setPosition(0,0);
-    goatWinImage.setSize(Vector2f(WIDTH, HEIGHT));
+    goatWinImage.setSize(Vector2f(800,600));
 }
 
 
@@ -123,7 +123,7 @@ int Game::run()//main game loop
 
 void Game::checkGameOver(sf::RenderWindow& Window)//checks if the game is over
 {
-    if(goatEaten>=5 )
+    if(goatEaten>=4 )
     {
         gameOver=true;
         Window.close();
@@ -146,10 +146,14 @@ void Game::goatWins()
     while(mWindow1.isOpen()){
     mWindow1.clear();
     mWindow1.draw(goatWinImage);
+    homeButtonImage.setPosition(50,50);
     mWindow1.draw(homeButtonImage);
     mWindow1.display();
     Event aevent;
         while (mWindow1.pollEvent(aevent)) {
+            if(aevent.type == Event::Closed){
+                mWindow1.close();
+            }
             if (aevent.type == Event::KeyPressed) {
                 if (aevent.key.code == Keyboard::Escape)
                     mWindow1.close();
@@ -170,10 +174,14 @@ void Game::tigerWins()
     while(mWindow1.isOpen()){
     mWindow1.clear();
     mWindow1.draw(tigerWinImage);
+    homeButtonImage.setPosition(50,50);
     mWindow1.draw(homeButtonImage);
     mWindow1.display();
      Event aevent;
         while (mWindow1.pollEvent(aevent)) {
+            if(aevent.type == Event::Closed){
+                mWindow1.close();
+            }
             if (aevent.type == Event::KeyPressed) {
                 if (aevent.key.code == Keyboard::Escape)
                     mWindow1.close();

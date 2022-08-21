@@ -81,13 +81,12 @@ Board::Board() //Constructor
 
 void Board::render(sf::RenderWindow &mWindow,Goat *goat,const bool *tigerFlag,bool goatWin,bool tigerWin,int goatsInHand,int goatsEaten)//Renders on the screen
 {
-//    *tigerFlag=false;
-//    goatsAtt[1].setString(std::to_string(goatsInHand));
-//    goatsAtt[0].setString(std::to_string(goatsEaten));
-//    if(goatsInHand>9 and goatsInHand<20 and goatsInHand!=11)
-//        goatsAtt[1].setPosition(1020,435);
-//    else if(goatsInHand<10 or goatsInHand==11)
-//        goatsAtt[1].setPosition(1020,435);
+    goatsAtt[1].setString(std::to_string(goatsInHand));
+    goatsAtt[0].setString(std::to_string(goatsEaten));
+    if(goatsInHand>9 and goatsInHand<20 and goatsInHand!=11)
+        goatsAtt[1].setPosition(10,435);
+    else if(goatsInHand<10 or goatsInHand==11)
+        goatsAtt[1].setPosition(10,435);
     mWindow.clear(Color::White);
     mWindow.draw(boardImage);//renders the board image
     mWindow.draw(goatsAtt[0]);
@@ -238,7 +237,7 @@ bool Board::checkMove()
                     (cell + i)->setState(TIGER);
                     break;
                 }
-                else if (search(goatEatenMoves, cell[i]))
+                else if ((search( goatEatenMoves , cell[i])) && (search(possibleMoves, cell[i])))
                 {
                     flag=true;
                     temp.x=cell[i].getCoord().x;
@@ -261,8 +260,6 @@ bool Board::checkMove()
         return false;
     }
 }
-
-
 
 sf::Vector2i Board::toPosition(Tiger &tiger,sf::Vector2i &pos)
 {
@@ -313,7 +310,7 @@ std::vector<Cell> Board::getPossibleMoves(const Cell &_cell)
     {
         if(cell[position-1].getState()==EMPTY)
             results.push_back(cell[position - 1]);
-        if(cell[position-1].getState()==GOAT)//checks for goat eaten moves
+        if(cell[position-1].getState()==GOAT && cell[position].getState()==EMPTY)//checks for goat eaten moves
         {
             getGoatEatenMoves(-2);
         }
@@ -326,7 +323,7 @@ std::vector<Cell> Board::getPossibleMoves(const Cell &_cell)
         {
             if(cell[position+6].getState()==EMPTY)
                 results.push_back(cell[position + 6]);
-            if(cell[position+6].getState()==GOAT)//checks for goar eaten moves
+            if(cell[position+6].getState()==GOAT && cell[position+3].getState()==EMPTY)//checks for goar eaten moves
             {
                 getGoatEatenMoves(12);
             }
@@ -336,7 +333,7 @@ std::vector<Cell> Board::getPossibleMoves(const Cell &_cell)
         {
             if(cell[position+4].getState()==EMPTY)
                 results.push_back(cell[position + 4]);
-            if(cell[position+4].getState()==GOAT)
+            if(cell[position+4].getState()==GOAT && cell[position+2].getState()==EMPTY)
             {
                 getGoatEatenMoves(8);
             }
@@ -346,7 +343,7 @@ std::vector<Cell> Board::getPossibleMoves(const Cell &_cell)
         {
             if(cell[position-4].getState()==EMPTY)
                 results.push_back(cell[position - 4]);
-            if(cell[position-4].getState()==GOAT)
+            if(cell[position-4].getState()==GOAT && cell[position-2].getState()==EMPTY)
             {
                 getGoatEatenMoves(-8);
             }
@@ -356,7 +353,7 @@ std::vector<Cell> Board::getPossibleMoves(const Cell &_cell)
         {
             if(cell[position-6].getState()==EMPTY)
                 results.push_back(cell[position-6]);
-            if(cell[position-6].getState()==GOAT )
+            if(cell[position-6].getState()==GOAT && cell[position-3].getState()==EMPTY)
             {
                 getGoatEatenMoves(-12);
             }
@@ -367,7 +364,7 @@ std::vector<Cell> Board::getPossibleMoves(const Cell &_cell)
     {
         if(cell[position+1].getState()==EMPTY)
             results.push_back(cell[position + 1]);
-        if(cell[position+1].getState()==GOAT )//checks for goat eaten moves
+        if(cell[position+1].getState()==GOAT && cell[position].getState()==EMPTY)//checks for goat eaten moves
         {
             getGoatEatenMoves(2);
         }
